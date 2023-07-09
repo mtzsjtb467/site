@@ -1,26 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Fake Captcha Prank</title>
+    <title>Human CAPTCHA Verification</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap">
+
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            background-color: #fafafa;
         }
-        .container {
-            text-align: center;
+
+        .captcha-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 20px;
+            background-color: white;
+        }
+
+        .captcha-image {
+            background: url('https://placeimg.com/200/300/tech/sepia') center/cover;
+            filter: blur(8px);
+            width: 200px;
+            height: 100px;
+            margin: 20px 0;
+        }
+
+        .captcha-input {
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            padding: 5px 10px;
+            margin-bottom: 10px;
+            width: 200px;
+        }
+
+        .button {
+            background-color: #4285f4;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 3px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #2a75f3;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>HUMAN CAPTCHA</h1>
-        <p>To prove you're not a robot, please enter your name:</p>
-        <input type="text" id="nameInput" name="name">
-        <button onclick="checkName()">Submit</button>
+    <div class="captcha-container">
+        <h2>To view the high resolution image, please verify you're not a robot</h2>
+        <div class="captcha-image"></div>
+        <input type="text" class="captcha-input" placeholder="Enter text here" id="nameInput">
+        <button class="button" onclick="checkName()">Verify</button>
         <p id="message"></p>
         <p id="attemptMessage"></p>
     </div>
@@ -31,7 +70,7 @@
         function checkName() {
             attempts--;
             if (attempts >= 0) {
-                document.getElementById("message").innerHTML = "Incorrect name. Try again.";
+                document.getElementById("message").innerHTML = "Incorrect. Try again.";
                 document.getElementById("attemptMessage").innerHTML = "Attempts remaining: " + attempts;
             } else {
                 document.getElementById("message").innerHTML = "No attempts left!";
