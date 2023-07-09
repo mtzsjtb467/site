@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Simple HTML Page</title>
+    <title>Fake Captcha Prank</title>
     <style>
         body {
             display: flex;
@@ -17,9 +17,26 @@
 </head>
 <body>
     <div class="container">
-        <h1>Verify</h1>
-        <p>Please enter your name:</p>
-        <input type="text" id="name" name="name">
+        <h1>HUMAN CAPTCHA</h1>
+        <p>To prove you're not a robot, please enter your name:</p>
+        <input type="text" id="nameInput" name="name">
+        <button onclick="checkName()">Submit</button>
+        <p id="message"></p>
+        <p id="attemptMessage"></p>
     </div>
+
+    <script>
+        var attempts = 3;
+
+        function checkName() {
+            attempts--;
+            if (attempts >= 0) {
+                document.getElementById("message").innerHTML = "Incorrect name. Try again.";
+                document.getElementById("attemptMessage").innerHTML = "Attempts remaining: " + attempts;
+            } else {
+                document.getElementById("message").innerHTML = "No attempts left!";
+            }
+        }
+    </script>
 </body>
 </html>
